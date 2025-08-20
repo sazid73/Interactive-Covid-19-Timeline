@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>2019 — COVID-19 (Interactive)</title>
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="../assets/details.css"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="detail-header">
+    <div class="header-inner">
+      <!-- ✅ Fixed Back button -->
+      <a class="back" href="../index.html#2019" aria-label="Back to timeline">
+        <i class="fa-solid fa-arrow-left"></i> Back to Timeline
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+
+      <div class="page-head">
+        <h1><i class="fa-solid fa-virus"></i> 2019 — Early detection</h1>
+        <p class="lead">
+          A visual guide to the first signals in late 2019. The map shows where the first cluster appeared (pulsing red) and early exported cases.
+        </p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row" role="list" aria-label="Snapshot KPIs">
+        <div class="kpi" tabindex="0" title="Months with activity">
+          <div class="num" data-end="2">0</div>
+          <div class="title">Months with activity</div>
+          <div class="meta">Nov – Dec</div>
+          <div class="more">Health teams noticed unusual pneumonia in Nov–Dec and started investigations.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="Novel pathogen identified">
+          <div class="num" data-end="1">0</div>
+          <div class="title">Novel pathogen identified</div>
+          <div class="meta">Sequencing started</div>
+          <div class="more">Scientists sequenced the virus, which helped make tests and start tracking it.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="Key hypotheses">
+          <div class="num" data-end="3">0</div>
+          <div class="title">Main hypotheses</div>
+          <div class="meta">Market / Household / Healthcare</div>
+          <div class="more">Investigators checked whether cases tied to markets, families, or hospitals.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="Sequencing underway">
+          <div class="num" data-end="1">0</div>
+          <div class="title">Sequencing underway</div>
+          <div class="meta">Helped tests</div>
+          <div class="more">Sequencing made testing and tracking much faster.</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="content-grid">
+        <div style="text-align:center">
+          <div class="tabset" role="tablist" aria-label="Explore">
+            <button class="tab active">Timeline</button>
+            <button class="tab">Map</button>
+            <button class="tab">Response</button>
+          </div>
+        </div>
+
+        <!-- Timeline panel -->
+        <div class="tab-panel" style="display:block">
+          <div style="text-align:center">
+            <div class="mini-timeline" aria-label="Mini timeline of late 2019">
+              <div class="mini-item" tabindex="0"
+                   data-title="Nov — Cluster found"
+                   data-desc="Doctors noticed several patients with similar pneumonia—this was the first local signal.">
+                <div class="dot"></div>
+                <div class="label">Nov</div>
+                <div class="sub">Cluster</div>
+              </div>
+
+              <div class="mini-item" tabindex="0"
+                   data-title="Early Dec — Investigations"
+                   data-desc="Teams interviewed patients and looked for common exposures to define the illness.">
+                <div class="dot"></div>
+                <div class="label">Dec 1</div>
+                <div class="sub">Investigate</div>
+              </div>
+
+              <div class="mini-item" tabindex="0"
+                   data-title="Mid Dec — Sequencing"
+                   data-desc="Sequencing efforts commenced; genetic data confirmed a novel coronavirus family.">
+                <div class="dot"></div>
+                <div class="label">Dec 15</div>
+                <div class="sub">Sequencing</div>
+              </div>
+
+              <div class="mini-item" tabindex="0"
+                   data-title="Late Dec — Alert"
+                   data-desc="Findings were shared internationally and surveillance systems registered the signal.">
+                <div class="dot"></div>
+                <div class="label">Dec 31</div>
+                <div class="sub">Alert</div>
+              </div>
+            </div>
+
+            <div class="timeline-detail" aria-live="polite">
+              <h3>Click a point to read a short, simple description</h3>
+              <p>The selected event summary will appear here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map panel -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz" aria-label="Map of early spread">
+            <div id="map" role="region" aria-label="Map showing Wuhan and early exported cases"></div>
+            <div class="legend">
+              <div class="item"><span class="swatch" style="background:#ff3232"></span> Wuhan (initial cluster)</div>
+              <div class="item"><span class="swatch" style="background:#dc2828"></span> Early exported cases</div>
+            </div>
+            <div class="viz caption">
+              This map shows Wuhan (pulsing red) and a few early locations where cases were detected.
+            </div>
+          </div>
+        </div>
+
+        <!-- Response panel -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz" aria-label="Response pipeline">
+            <svg viewBox="0 0 420 120" role="img" aria-labelledby="respTitle">
+              <title id="respTitle">Response pipeline</title>
+              <g font-size="11" fill="#334155" text-anchor="middle">
+                <rect x="18" y="20" width="84" height="48" rx="8" fill="#e8f6ff" stroke="#9fd6ff"/>
+                <text x="60" y="50" font-weight="700">Alert</text>
+
+                <rect x="118" y="20" width="84" height="48" rx="8" fill="#e9fff6" stroke="#9ff0ce"/>
+                <text x="160" y="50" font-weight="700">Investigate</text>
+
+                <rect x="218" y="20" width="84" height="48" rx="8" fill="#fff0f0" stroke="#ffc0b0"/>
+                <text x="260" y="50" font-weight="700">Define</text>
+
+                <rect x="318" y="20" width="84" height="48" rx="8" fill="#f6edff" stroke="#d7c6ff"/>
+                <text x="360" y="50" font-weight="700">Sequence</text>
+              </g>
+            </svg>
+            <div class="viz caption">Authorities moved from alert → investigation → definition → sequencing.</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div style="text-align:center">
+          <div class="chart-row">
+            <div class="chart-card">
+              <h4>Signal growth</h4>
+              <canvas id="ch-signal" height="120"></canvas>
+              <div class="small">Cluster reports rose in late 2019.</div>
+            </div>
+
+            <div class="chart-card">
+              <h4>Case types</h4>
+              <canvas id="ch-categories" height="120"></canvas>
+              <div class="small">Early cases grouped by exposure type.</div>
+            </div>
+          </div>
+
+          <div class="chart-row" style="margin-top:10px">
+            <div class="chart-card" style="width:720px; max-width:100%">
+              <h4>Response emphasis</h4>
+              <canvas id="ch-actions" height="140"></canvas>
+              <div class="small">Relative focus of different early steps.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery + Quiz -->
+        <div style="margin-top:12px; text-align:center">
+          <div class="gallery">
+            <img src="https://picsum.photos/id/1003/800/500" alt="City view"/>
+            <img src="https://picsum.photos/id/1011/800/500" alt="Lab work"/>
+            <img src="https://picsum.photos/id/1015/800/500" alt="Hospital"/>
+          </div>
+
+          <div class="quiz" style="margin-top:12px">
+            <div class="q" data-answer="b">
+              <h4>1) What was the main activity in late 2019?</h4>
+              <label><input type="radio" name="q1" value="a"> Mass vaccination</label>
+              <label><input type="radio" name="q1" value="b"> Finding pneumonia clusters</label>
+              <label><input type="radio" name="q1" value="c"> Ending the emergency</label>
+            </div>
+
+            <div class="q" data-answer="c">
+              <h4>2) Which action helped early on?</h4>
+              <label><input type="radio" name="q2" value="a"> Removing masks</label>
+              <label><input type="radio" name="q2" value="b"> Reopening borders</label>
+              <label><input type="radio" name="q2" value="c"> Case definition + sequencing</label>
+            </div>
+
+            <button class="submit" type="button">Submit answers</button>
+            <div class="result"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <div class="frame">
+      <button class="close"><i class="fa-solid fa-xmark"></i></button>
+      <img src="" alt="preview"/>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../assets/detail.js"></script>
+</body>
+</html>

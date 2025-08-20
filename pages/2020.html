@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>2020 — COVID-19 (Interactive)</title>
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="../assets/details.css"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="detail-header">
+    <div class="header-inner">
+      <a class="back" href="../index.html" aria-label="Back to timeline">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+
+      <div class="page-head">
+        <h1><i class="fa-solid fa-globe"></i> 2020 — Global Spread & Response</h1>
+        <p class="lead">
+          A visual guide to the global escalation in 2020: worldwide spread, government responses, and the pandemic declaration.
+        </p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row" role="list" aria-label="Snapshot KPIs">
+        <div class="kpi" tabindex="0" title="Global cases in 2020">
+          <div class="num" data-end="83">0</div>
+          <div class="title">Million cases</div>
+          <div class="meta">End of 2020</div>
+          <div class="more">By December 2020, more than 83 million cases had been reported worldwide.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="Global deaths in 2020">
+          <div class="num" data-end="1.8">0</div>
+          <div class="title">Million deaths</div>
+          <div class="meta">End of 2020</div>
+          <div class="more">Over 1.8 million deaths were attributed to COVID-19 during 2020.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="WHO Declaration">
+          <div class="num" data-end="1">0</div>
+          <div class="title">Pandemic declared</div>
+          <div class="meta">March 2020</div>
+          <div class="more">WHO declared COVID-19 a global pandemic on March 11, 2020.</div>
+        </div>
+
+        <div class="kpi" tabindex="0" title="Vaccines underway">
+          <div class="num" data-end="2">0</div>
+          <div class="title">First vaccines approved</div>
+          <div class="meta">Dec 2020</div>
+          <div class="more">Pfizer-BioNTech and Moderna vaccines received emergency use authorization in late 2020.</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="content-grid">
+        <div style="text-align:center">
+          <div class="tabset" role="tablist" aria-label="Explore">
+            <button class="tab active">Timeline</button>
+            <button class="tab">Map</button>
+            <button class="tab">Response</button>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="tab-panel" style="display:block">
+          <div style="text-align:center">
+            <div class="mini-timeline" aria-label="Mini timeline of 2020">
+              <div class="mini-item" data-title="Jan — First global cases" data-desc="Cases were detected outside China in January, marking international spread." data-tip="January: First cases abroad">
+                <div class="dot"></div>
+                <div class="label">Jan</div>
+                <div class="sub">First global</div>
+              </div>
+              <div class="mini-item" data-title="Mar — Pandemic declared" data-desc="WHO declared COVID-19 a global pandemic on March 11, 2020." data-tip="March: Pandemic declared">
+                <div class="dot"></div>
+                <div class="label">Mar</div>
+                <div class="sub">Pandemic</div>
+              </div>
+              <div class="mini-item" data-title="Mid-2020 — Lockdowns" data-desc="Many countries introduced strict lockdowns and travel bans." data-tip="Mid-2020: Lockdowns">
+                <div class="dot"></div>
+                <div class="label">Jun</div>
+                <div class="sub">Lockdowns</div>
+              </div>
+              <div class="mini-item" data-title="Dec — Vaccines approved" data-desc="Pfizer-BioNTech and Moderna vaccines were approved in December 2020." data-tip="Dec: Vaccines approved">
+                <div class="dot"></div>
+                <div class="label">Dec</div>
+                <div class="sub">Vaccines</div>
+              </div>
+            </div>
+
+            <div class="timeline-detail" aria-live="polite">
+              <h3>Click a point to read about key events</h3>
+              <p>The event details will appear here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz" aria-label="Map of 2020 spread">
+            <div id="map" role="region" aria-label="Map showing spread across continents"></div>
+            <div class="legend">
+              <div class="item"><span class="swatch" style="background:#ff3232"></span> Wuhan origin</div>
+              <div class="item"><span class="swatch" style="background:#dc2828"></span> Global spread</div>
+            </div>
+            <div class="viz caption">This map shows the initial cluster in Wuhan and major spread across continents in 2020.</div>
+          </div>
+        </div>
+
+        <!-- Response -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <svg viewBox="0 0 420 120">
+              <g font-size="11" fill="#334155" text-anchor="middle">
+                <rect x="18" y="20" width="84" height="48" rx="8" fill="#ffe8e8" stroke="#ffb0b0"/>
+                <text x="60" y="50" font-weight="700">Lockdowns</text>
+
+                <rect x="118" y="20" width="84" height="48" rx="8" fill="#e8f6ff" stroke="#9fd6ff"/>
+                <text x="160" y="50" font-weight="700">Testing</text>
+
+                <rect x="218" y="20" width="84" height="48" rx="8" fill="#e9fff6" stroke="#9ff0ce"/>
+                <text x="260" y="50" font-weight="700">Tracing</text>
+
+                <rect x="318" y="20" width="84" height="48" rx="8" fill="#f6edff" stroke="#d7c6ff"/>
+                <text x="360" y="50" font-weight="700">Vaccines</text>
+              </g>
+            </svg>
+            <div class="viz caption">Governments responded with lockdowns, testing, tracing, and preparing vaccines.</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div style="text-align:center">
+          <div class="chart-row">
+            <div class="chart-card">
+              <h4>Global case growth (2020)</h4>
+              <canvas id="ch-signal" height="120"></canvas>
+              <div class="small">Illustrative curve of global case rise in 2020.</div>
+            </div>
+
+            <div class="chart-card">
+              <h4>Response measures</h4>
+              <canvas id="ch-categories" height="120"></canvas>
+              <div class="small">Breakdown of major government actions.</div>
+            </div>
+          </div>
+
+          <div class="chart-row" style="margin-top:10px">
+            <div class="chart-card" style="width:720px; max-width:100%">
+              <h4>Attention focus</h4>
+              <canvas id="ch-actions" height="140"></canvas>
+              <div class="small">Relative emphasis on various interventions.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery + Quiz -->
+        <div style="margin-top:12px; text-align:center">
+          <div class="gallery">
+            <img src="https://picsum.photos/id/1025/800/500" alt="Empty streets during lockdown"/>
+            <img src="https://picsum.photos/id/1040/800/500" alt="Healthcare workers"/>
+            <img src="https://picsum.photos/id/1067/800/500" alt="Vaccine research"/>
+          </div>
+
+          <div class="quiz" style="margin-top:12px">
+            <div class="q" data-answer="b">
+              <h4>1) When did WHO declare COVID-19 a pandemic?</h4>
+              <div class="opts">
+                <label><input type="radio" name="q1" value="a"> January 2020</label>
+                <label><input type="radio" name="q1" value="b"> March 2020</label>
+                <label><input type="radio" name="q1" value="c"> December 2020</label>
+              </div>
+            </div>
+
+            <div class="q" data-answer="c">
+              <h4>2) Which major milestone happened in December 2020?</h4>
+              <div class="opts">
+                <label><input type="radio" name="q2" value="a"> Global lockdown ended</label>
+                <label><input type="radio" name="q2" value="b"> Pandemic declared</label>
+                <label><input type="radio" name="q2" value="c"> First vaccines approved</label>
+              </div>
+            </div>
+
+            <button class="submit" type="button">Submit answers</button>
+            <div class="result" style="margin-top:8px; font-weight:700; display:block"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="actions" style="margin-top:16px">
+        <a class="btn" href="../index.html#2020">Back to timeline</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <div class="frame">
+      <button class="close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <img src="" alt="preview"/>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Project interactions -->
+  <script src="../assets/detail.js"></script>
+</body>
+</html>

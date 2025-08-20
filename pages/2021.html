@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>2021 — Vaccines & Variants</title>
+
+  <link rel="stylesheet" href="../assets/details.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="detail-header">
+    <div class="header-inner">
+      <a class="back" href="../index.html" aria-label="Back to timeline">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+
+      <div class="page-head">
+        <h1><i class="fa-solid fa-syringe"></i> 2021 — Vaccines & Variants</h1>
+        <p class="lead">A year defined by global vaccination drives and the emergence of new variants like Delta and Omicron.</p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi" tabindex="0">
+          <div class="num" data-end="9.2">0</div>
+          <div class="title">Billion vaccine doses</div>
+          <div class="meta">By Dec 2021</div>
+          <div class="more">Over 9 billion vaccine doses administered globally.</div>
+        </div>
+        <div class="kpi" tabindex="0">
+          <div class="num" data-end="3.5">0</div>
+          <div class="title">Billion people vaccinated</div>
+          <div class="meta">~45% global</div>
+          <div class="more">Billions received at least one dose of a COVID-19 vaccine.</div>
+        </div>
+        <div class="kpi" tabindex="0">
+          <div class="num" data-end="2">0</div>
+          <div class="title">Major variants</div>
+          <div class="meta">Delta & Omicron</div>
+          <div class="more">Delta drove surges mid-year, Omicron emerged in November.</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="content-grid">
+        <div style="text-align:center">
+          <div class="tabset">
+            <button class="tab active">Timeline</button>
+            <button class="tab">Map</button>
+            <button class="tab">Response</button>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="tab-panel" style="display:block">
+          <div class="mini-timeline">
+            <div class="mini-item" data-title="Jan — Vaccines roll out" data-desc="Countries began mass vaccinations with Pfizer, Moderna, and AstraZeneca.">
+              <div class="dot"></div><div class="label">Jan</div><div class="sub">Vaccines</div>
+            </div>
+            <div class="mini-item" data-title="Jun — Delta surge" data-desc="Delta variant spread rapidly, overwhelming healthcare systems.">
+              <div class="dot"></div><div class="label">Jun</div><div class="sub">Delta</div>
+            </div>
+            <div class="mini-item" data-title="Nov — Omicron detected" data-desc="South Africa reported Omicron, raising concern of faster spread.">
+              <div class="dot"></div><div class="label">Nov</div><div class="sub">Omicron</div>
+            </div>
+          </div>
+          <div class="timeline-detail">
+            <h3>Click a point to read events</h3>
+            <p>Key milestones in 2021.</p>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <div id="map"></div>
+            <div class="viz caption">Map shows spread of Delta and Omicron variants globally.</div>
+          </div>
+        </div>
+
+        <!-- Response -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <svg viewBox="0 0 420 120">
+              <rect x="20" y="20" width="100" height="50" rx="8" fill="#e8f6ff"/>
+              <text x="70" y="50" text-anchor="middle" font-weight="700">Vaccination</text>
+              <rect x="160" y="20" width="100" height="50" rx="8" fill="#ffe8e8"/>
+              <text x="210" y="50" text-anchor="middle" font-weight="700">Travel bans</text>
+              <rect x="300" y="20" width="100" height="50" rx="8" fill="#f6edff"/>
+              <text x="350" y="50" text-anchor="middle" font-weight="700">Boosters</text>
+            </svg>
+            <div class="viz caption">Vaccination, restrictions, and boosters shaped 2021.</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-row">
+          <div class="chart-card">
+            <h4>Vaccination Progress</h4>
+            <canvas id="ch-signal"></canvas>
+          </div>
+          <div class="chart-card">
+            <h4>Variants Impact</h4>
+            <canvas id="ch-categories"></canvas>
+          </div>
+        </div>
+
+        <!-- Gallery + Quiz -->
+        <div class="gallery">
+          <img src="https://picsum.photos/id/1021/800/500" alt="Vaccine rollout"/>
+          <img src="https://picsum.photos/id/1031/800/500" alt="Hospital response"/>
+        </div>
+
+        <div class="quiz">
+          <div class="q" data-answer="b">
+            <h4>1) Which variant surged mid-2021?</h4>
+            <div class="opts">
+              <label><input type="radio" name="q1" value="a"> Omicron</label>
+              <label><input type="radio" name="q1" value="b"> Delta</label>
+              <label><input type="radio" name="q1" value="c"> Alpha</label>
+            </div>
+          </div>
+          <div class="q" data-answer="c">
+            <h4>2) When was Omicron first detected?</h4>
+            <div class="opts">
+              <label><input type="radio" name="q2" value="a"> January 2021</label>
+              <label><input type="radio" name="q2" value="b"> June 2021</label>
+              <label><input type="radio" name="q2" value="c"> November 2021</label>
+            </div>
+          </div>
+          <button class="submit">Submit answers</button>
+          <div class="result"></div>
+        </div>
+
+      </div>
+      <div class="actions"><a class="btn" href="../index.html#2021">Back to timeline</a></div>
+    </div>
+  </div>
+
+  <div class="lightbox"><div class="frame"><button class="close"><i class="fa-solid fa-xmark"></i></button><img src="" alt=""/></div></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../assets/detail.js"></script>
+</body>
+</html>

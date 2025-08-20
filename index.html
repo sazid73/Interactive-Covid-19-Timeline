@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COVID-19 Interactive Timeline</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <h1>COVID-19 Global Timeline</h1>
+    <p class="subtitle">Explore major events (2019 – 2025)</p>
+    <nav class="year-nav">
+      <button onclick="scrollToYear('2019')">2019</button>
+      <button onclick="scrollToYear('2020')">2020</button>
+      <button onclick="scrollToYear('2021')">2021</button>
+      <button onclick="scrollToYear('2022')">2022</button>
+      <button onclick="scrollToYear('2023')">2023</button>
+      <button onclick="scrollToYear('2024')">2024</button>
+      <button onclick="scrollToYear('2025')">2025</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="timeline" id="timeline"></div>
+  </main>
+
+  <footer class="footer">
+    <span>© COVID-19 Timeline - Developed by EdTE Intrepids</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

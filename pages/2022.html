@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>2022 — Adaptation & Recovery</title>
+
+  <link rel="stylesheet" href="../assets/details.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="detail-header">
+    <div class="header-inner">
+      <a class="back" href="../index.html">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+
+      <div class="page-head">
+        <h1><i class="fa-solid fa-heart"></i> 2022 — Adaptation & Recovery</h1>
+        <p class="lead">Wider booster campaigns, Omicron waves, and gradual reopening as the world adapted to living with COVID-19.</p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi"><div class="num" data-end="11">0</div><div class="title">Billion doses total</div><div class="meta">By end of 2022</div><div class="more">Over 11 billion doses administered globally.</div></div>
+        <div class="kpi"><div class="num" data-end="70">0</div><div class="title">% population vaccinated</div><div class="meta">At least one dose</div><div class="more">By mid-2022, ~70% of global population received one dose.</div></div>
+        <div class="kpi"><div class="num" data-end="4">0</div><div class="title">Major Omicron waves</div><div class="meta">Throughout 2022</div><div class="more">Omicron variants BA.1, BA.2, BA.4, BA.5 caused new surges.</div></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="content-grid">
+        <div style="text-align:center">
+          <div class="tabset">
+            <button class="tab active">Timeline</button>
+            <button class="tab">Map</button>
+            <button class="tab">Response</button>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="tab-panel" style="display:block">
+          <div class="mini-timeline">
+            <div class="mini-item" data-title="Jan — Omicron wave" data-desc="Omicron caused record-breaking global case numbers.">
+              <div class="dot"></div><div class="label">Jan</div><div class="sub">Omicron</div>
+            </div>
+            <div class="mini-item" data-title="Apr — BA.2 spread" data-desc="BA.2 became dominant in many countries.">
+              <div class="dot"></div><div class="label">Apr</div><div class="sub">BA.2</div>
+            </div>
+            <div class="mini-item" data-title="Late 2022 — Reopening" data-desc="Many countries lifted restrictions and reopened borders.">
+              <div class="dot"></div><div class="label">Nov</div><div class="sub">Reopen</div>
+            </div>
+          </div>
+          <div class="timeline-detail"><h3>Click a point</h3><p>Events of 2022</p></div>
+        </div>
+
+        <!-- Map -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <div id="map"></div>
+            <div class="viz caption">Omicron spread waves highlighted across regions in 2022.</div>
+          </div>
+        </div>
+
+        <!-- Response -->
+      <!-- Response -->
+<div class="tab-panel" style="display:none">
+  <div class="viz">
+    <svg viewBox="0 0 500 120">
+      <!-- Box 1 -->
+      <rect x="20" y="20" width="120" height="60" rx="10" fill="#e9fff6"/>
+      <text x="80" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Boosters</text>
+
+      <!-- Box 2 -->
+      <rect x="170" y="20" width="140" height="60" rx="10" fill="#ffe8e8"/>
+      <text x="240" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Restrictions eased</text>
+
+      <!-- Box 3 -->
+      <rect x="340" y="20" width="140" height="60" rx="10" fill="#f6edff"/>
+      <text x="410" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Living with COVID</text>
+    </svg>
+    <div class="viz caption">2022 marked a shift towards adaptation and reopening.</div>
+  </div>
+</div>
+
+
+        <!-- Charts -->
+        <div class="chart-row">
+          <div class="chart-card"><h4>Omicron Waves</h4><canvas id="ch-signal"></canvas></div>
+          <div class="chart-card"><h4>Vaccination Coverage</h4><canvas id="ch-categories"></canvas></div>
+        </div>
+
+        <!-- Gallery + Quiz -->
+        <div class="gallery">
+          <img src="https://picsum.photos/id/1045/800/500" alt="Testing center"/>
+          <img src="https://picsum.photos/id/1052/800/500" alt="Booster campaign"/>
+        </div>
+
+        <div class="quiz">
+          <div class="q" data-answer="a">
+            <h4>1) Which variant drove early 2022 surges?</h4>
+            <div class="opts">
+              <label><input type="radio" name="q1" value="a"> Omicron</label>
+              <label><input type="radio" name="q1" value="b"> Delta</label>
+              <label><input type="radio" name="q1" value="c"> Alpha</label>
+            </div>
+          </div>
+          <div class="q" data-answer="c">
+            <h4>2) What was a key theme of 2022?</h4>
+            <div class="opts">
+              <label><input type="radio" name="q2" value="a"> First vaccines</label>
+              <label><input type="radio" name="q2" value="b"> Pandemic declared</label>
+              <label><input type="radio" name="q2" value="c"> Adaptation & reopening</label>
+            </div>
+          </div>
+          <button class="submit">Submit answers</button>
+          <div class="result"></div>
+        </div>
+      </div>
+      <div class="actions"><a class="btn" href="../index.html#2022">Back to timeline</a></div>
+    </div>
+  </div>
+
+  <div class="lightbox"><div class="frame"><button class="close"><i class="fa-solid fa-xmark"></i></button><img src="" alt=""/></div></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../assets/detail.js"></script>
+</body>
+</html>

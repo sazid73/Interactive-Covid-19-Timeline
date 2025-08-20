@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>2023 — COVID-19 (Interactive)</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/details.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="detail-header">
+    <div class="header-inner">
+      <a class="back" href="../index.html" aria-label="Back to timeline">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+
+      <div class="page-head">
+        <h1><i class="fa-solid fa-virus-covid"></i> 2023 — Transition phase</h1>
+        <p class="lead">Global health authorities shifted towards long-term management, with emphasis on immunity, monitoring, and rebuilding.</p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi" title="Global cases trend"><div class="num" data-end="20">0</div><div class="title">Million cases</div><div class="meta">Lower spikes</div><div class="more">Cases dropped compared to 2021–22, showing seasonal patterns.</div></div>
+        <div class="kpi" title="WHO status"><div class="num" data-end="1">0</div><div class="title">Emergency lifted</div><div class="meta">May 2023</div><div class="more">WHO declared the global emergency over in May 2023.</div></div>
+        <div class="kpi" title="Immunity levels"><div class="num" data-end="70">0</div><div class="title">% Global immunity</div><div class="meta">Hybrid immunity</div><div class="more">Combination of infection & vaccination provided strong population immunity.</div></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="content-grid">
+        <div style="text-align:center">
+          <div class="tabset">
+            <button class="tab active">Timeline</button>
+            <button class="tab">Map</button>
+            <button class="tab">Response</button>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="tab-panel" style="display:block">
+          <div style="text-align:center">
+            <div class="mini-timeline">
+              <div class="mini-item" data-title="May 2023 — WHO lifts emergency" data-desc="WHO declared COVID-19 no longer a Public Health Emergency of International Concern."><div class="dot"></div><div class="label">May</div><div class="sub">Emergency lifted</div></div>
+              <div class="mini-item" data-title="Mid 2023 — Hybrid immunity" data-desc="Strong immunity observed through both vaccination and prior infections."><div class="dot"></div><div class="label">Jun</div><div class="sub">Immunity</div></div>
+              <div class="mini-item" data-title="Late 2023 — Monitoring phase" data-desc="Focus shifted to routine surveillance and seasonal monitoring."><div class="dot"></div><div class="label">Oct</div><div class="sub">Monitoring</div></div>
+            </div>
+            <div class="timeline-detail"><h3>Click an event</h3><p>Summary will appear here.</p></div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <div id="map"></div>
+            <div class="viz caption">Focus areas of new variants and global monitoring in 2023.</div>
+          </div>
+        </div>
+
+        <!-- Response -->
+        <div class="tab-panel" style="display:none">
+          <div class="viz">
+            <svg viewBox="0 0 500 120">
+              <rect x="20" y="20" width="140" height="60" rx="10" fill="#e9fff6"/>
+              <text x="90" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Immunity focus</text>
+              <rect x="190" y="20" width="140" height="60" rx="10" fill="#ffe8e8"/>
+              <text x="260" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Surveillance</text>
+              <rect x="360" y="20" width="120" height="60" rx="10" fill="#f6edff"/>
+              <text x="420" y="50" text-anchor="middle" dominant-baseline="middle" font-weight="700">Transition</text>
+            </svg>
+            <div class="viz caption">2023 focused on shifting from emergency to sustained monitoring.</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts">
+          <div class="chart-card"><h4>Case trend</h4><canvas id="ch-signal"></canvas></div>
+          <div class="chart-card"><h4>Immunity mix</h4><canvas id="ch-categories"></canvas></div>
+        </div>
+
+        <!-- Gallery + Quiz -->
+        <div class="gallery-grid">
+          <img src="https://picsum.photos/id/1043/800/500" alt="Vaccination center"/>
+          <img src="https://picsum.photos/id/1062/800/500" alt="Hospital monitoring"/>
+        </div>
+
+        <div class="quiz">
+          <div class="q" data-answer="b"><h4>1) What major declaration happened in May 2023?</h4>
+            <label><input type="radio" name="q1" value="a"> First vaccines were approved</label>
+            <label><input type="radio" name="q1" value="b"> WHO lifted global emergency</label>
+            <label><input type="radio" name="q1" value="c"> Borders closed again</label>
+          </div>
+          <button class="submit">Submit answers</button>
+          <div class="result"></div>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="../index.html#2023">Back to timeline</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox"><div class="frame"><button class="close"><i class="fa-solid fa-xmark"></i></button><img src="" alt="preview"/></div></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../assets/detail.js"></script>
+</body>
+</html>
