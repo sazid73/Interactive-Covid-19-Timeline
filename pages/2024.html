@@ -5,24 +5,80 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>2024 — COVID-19 (Interactive)</title>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="../assets/details.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* ===== Responsive fixes for 2024 ===== */
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    .kpi {
+      flex: 1 1 200px;
+      max-width: 250px;
+    }
+
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .chart-card {
+      flex: 1 1 320px;
+      max-width: 720px;
+    }
+
+    .mini-timeline {
+      display: flex;
+      overflow-x: auto;
+      padding: 8px 0;
+      gap: 16px;
+      justify-content: start;
+    }
+    .mini-item {
+      min-width: 100px;
+      flex: 0 0 auto;
+    }
+
+    #map {
+      width: 100%;
+      height: 50vh;
+      min-height: 300px;
+    }
+
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .gallery-grid img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+
+    .quiz label {
+      display: block;
+      margin: 4px 0;
+    }
+  </style>
 </head>
 <body>
   <header class="detail-header">
     <div class="header-inner">
-      <a class="back" href="../index.html" aria-label="Back to timeline">
-        <i class="fa-solid fa-arrow-left"></i> Back
-      </a>
+      <a class="back" href="../index.html#2024"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
   </header>
 
   <div class="container">
     <div class="panel">
-
       <div class="page-head">
         <h1><i class="fa-solid fa-shield-virus"></i> 2024 — Long-term resilience</h1>
         <p class="lead">By 2024, COVID-19 was managed as part of broader health systems, with focus on preparedness and resilient healthcare.</p>
@@ -47,14 +103,18 @@
 
         <!-- Timeline -->
         <div class="tab-panel" style="display:block">
-          <div style="text-align:center">
-            <div class="mini-timeline">
-              <div class="mini-item" data-title="Early 2024 — Annual booster rollouts" data-desc="Targeted high-risk populations with updated boosters."><div class="dot"></div><div class="label">Jan</div><div class="sub">Boosters</div></div>
-              <div class="mini-item" data-title="Mid 2024 — Stronger surveillance" data-desc="Wastewater and sentinel systems became standard worldwide."><div class="dot"></div><div class="label">Jun</div><div class="sub">Surveillance</div></div>
-              <div class="mini-item" data-title="Late 2024 — Pandemic planning" data-desc="COVID integrated into all-hazard pandemic preparedness."><div class="dot"></div><div class="label">Oct</div><div class="sub">Preparedness</div></div>
+          <div class="mini-timeline">
+            <div class="mini-item" data-title="Early 2024 — Annual booster rollouts" data-desc="Targeted high-risk populations with updated boosters.">
+              <div class="dot"></div><div class="label">Jan</div><div class="sub">Boosters</div>
             </div>
-            <div class="timeline-detail"><h3>Click an event</h3><p>Summary will appear here.</p></div>
+            <div class="mini-item" data-title="Mid 2024 — Stronger surveillance" data-desc="Wastewater and sentinel systems became standard worldwide.">
+              <div class="dot"></div><div class="label">Jun</div><div class="sub">Surveillance</div>
+            </div>
+            <div class="mini-item" data-title="Late 2024 — Pandemic planning" data-desc="COVID integrated into all-hazard pandemic preparedness.">
+              <div class="dot"></div><div class="label">Oct</div><div class="sub">Preparedness</div>
+            </div>
           </div>
+          <div class="timeline-detail"><h3>Click an event</h3><p>Summary will appear here.</p></div>
         </div>
 
         <!-- Map -->
