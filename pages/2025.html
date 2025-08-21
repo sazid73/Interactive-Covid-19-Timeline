@@ -10,6 +10,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Responsive + swipe-friendly timeline CSS -->
+  <style>
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+      .container { padding: 10px; }
+      .kpi-row { flex-direction: column; gap: 15px; }
+      .chart-card { width: 100%; margin-bottom: 20px; }
+      .gallery-grid { display: flex; flex-direction: column; gap: 15px; }
+      .tabset { flex-wrap: wrap; gap: 10px; }
+      .mini-timeline {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding-bottom: 10px;
+      }
+      .mini-item {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        min-width: 120px;
+      }
+      .mini-timeline::-webkit-scrollbar {
+        display: none;
+      }
+      .mini-timeline {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="detail-header">
@@ -50,9 +82,15 @@
         <div class="tab-panel" style="display:block">
           <div style="text-align:center">
             <div class="mini-timeline">
-              <div class="mini-item" data-title="Early 2025 — Seasonal vaccination campaigns" data-desc="COVID-19 shots now align with influenza campaigns."><div class="dot"></div><div class="label">Jan</div><div class="sub">Seasonal</div></div>
-              <div class="mini-item" data-title="Mid 2025 — AI-driven surveillance" data-desc="Machine learning integrated into outbreak detection."><div class="dot"></div><div class="label">Jun</div><div class="sub">AI Monitoring</div></div>
-              <div class="mini-item" data-title="Late 2025 — Pandemic preparedness strengthened" data-desc="COVID-19 used as a model for future health crises planning."><div class="dot"></div><div class="label">Oct</div><div class="sub">Preparedness</div></div>
+              <div class="mini-item" data-title="Early 2025 — Seasonal vaccination campaigns" data-desc="COVID-19 shots now align with influenza campaigns.">
+                <div class="dot"></div><div class="label">Jan</div><div class="sub">Seasonal</div>
+              </div>
+              <div class="mini-item" data-title="Mid 2025 — AI-driven surveillance" data-desc="Machine learning integrated into outbreak detection.">
+                <div class="dot"></div><div class="label">Jun</div><div class="sub">AI Monitoring</div>
+              </div>
+              <div class="mini-item" data-title="Late 2025 — Pandemic preparedness strengthened" data-desc="COVID-19 used as a model for future health crises planning.">
+                <div class="dot"></div><div class="label">Oct</div><div class="sub">Preparedness</div>
+              </div>
             </div>
             <div class="timeline-detail"><h3>Click an event</h3><p>Summary will appear here.</p></div>
           </div>
@@ -124,5 +162,18 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="../assets/detail.js"></script>
+
+  <!-- Swipe-friendly timeline JS -->
+  <script>
+    const miniTimelines = document.querySelectorAll('.mini-timeline');
+    miniTimelines.forEach(timeline => {
+      timeline.addEventListener('wheel', e => {
+        if(window.innerWidth <= 768){
+          e.preventDefault();
+          timeline.scrollLeft += e.deltaY;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
